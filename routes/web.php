@@ -38,6 +38,8 @@ Route::post('register-user/action', [RegisterController::class, 'actionregister'
 //login
 Route::get('/login-user', [LoginController::class, 'login'])->name('login-user');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
+Route::get('/logout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware(['auth']);
+
 Auth::routes();
 
 Route::get('admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware(['auth', 'role:admin', 'status:active']);;

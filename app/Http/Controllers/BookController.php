@@ -60,7 +60,6 @@ class BookController extends Controller
         $image->move('images_book', $file_name);
 
         $user->files = $file_name;
-
         $kategori = Kategori::find($request->id_kategori);
         if($kategori->STOCK > 0){
             $result_stock = $kategori->STOCK + $request->jumlah_buku;

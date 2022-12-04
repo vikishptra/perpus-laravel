@@ -42,7 +42,7 @@ Route::get('/logout', [LoginController::class, 'actionlogout'])->name('actionlog
 
 Auth::routes();
 
-Route::get('admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware(['auth', 'role:admin', 'status:active']);;
+Route::get('admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware(['auth', 'role:admin', 'status:active']);
 
 //user
 Route::get('admin/users', [App\Http\Controllers\UserController::class, 'index'])->name('index')->middleware(['auth', 'role:admin', 'status:active']);

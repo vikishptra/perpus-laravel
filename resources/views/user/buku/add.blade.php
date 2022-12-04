@@ -21,7 +21,6 @@
                 <div class="sidebar-heading border-bottom bg-light">Hi {{Auth::user()->name}}</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/user">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/history/buku">History Buku</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ route('logout') }}" 
                   onclick="event.preventDefault();
@@ -97,7 +96,7 @@
             </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Pinjam Buku</button>
-                    <a href="{{route('index-book')}}" class="btn btn-default">
+                    <a href="{{route('get-index-home-user')}}" class="btn btn-default">
                         Batal
                     </a>
                 </div>

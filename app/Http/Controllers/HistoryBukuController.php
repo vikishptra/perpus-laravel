@@ -34,11 +34,10 @@ class HistoryBukuController extends Controller
         $user = Buku::find($request->ID_BUKU);
         $jumlah_buku = $user->JUMLAH_BUKU -1;
         $kategori = Kategori::find($request->ID_KATEGORI);
-        $userRecord = $userRecord = Transaksi::where('id_user','=',$request->id_user)
-        ->where('status','=', $request->status)->orWhere('status', '=', 2)->orWhere('status', '=', 1)->first();
+        $userRecord = $userRecord = Transaksi::where('id_user','=',Auth::user()->id)
+        ->where('status','=', $request->status)->where('status', '=', 2)->where('status', '=', 1)->first();
 
-      
-        if($userRecord == null){
+        if($userRecord == null ){
             $user = Transaksi::create([
                 'id_user' => $request->id_user,
                 'tanggal_pinjam' => $request->tanggal_pinjam,
@@ -61,8 +60,10 @@ class HistoryBukuController extends Controller
     }
     public function kembaliBuku($id_transaksi){
         $transaksi = Transaksi::find($id_transaksi);
+        if($transaksi->status == 1){
         Transaksi::where('id_transaksi', $id_transaksi)
         ->update(['status' => 2]);
+        }
         return redirect()->route('get-history-buku-user');
     }    
 
